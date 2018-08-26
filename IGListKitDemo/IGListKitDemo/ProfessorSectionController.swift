@@ -23,6 +23,11 @@ class ProfessorSectionController: ListSectionController {
     }
     
     // MARK: - ListSectionController overrides
+    override func numberOfItems() -> Int {
+        // Here we return just 1 cell. However, we could return more than 1 if needed
+        return 1
+    }
+    
     override func sizeForItem(at index: Int) -> CGSize {
         return CGSize(width: 100, height: 100)
     }
