@@ -9,7 +9,7 @@
 import UIKit
 import IGListKit
 
-class ViewController: UIViewController, ListAdapterDataSource, ProfessorSectionControllerDelegate {
+class ViewController: UIViewController, ProfessorSectionControllerDelegate {
 
     // Each collectionView should have a corresponding adapter
     var collectionView: UICollectionView!
@@ -72,7 +72,7 @@ class ViewController: UIViewController, ListAdapterDataSource, ProfessorSectionC
     }
 }
 
-extension ViewController {
+extension ViewController: ListAdapterDataSource {
     // MARK: - ListAdapterDataSource
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         // Return the data model objects to use
