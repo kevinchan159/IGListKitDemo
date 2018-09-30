@@ -36,10 +36,10 @@ class ProfessorCell: UICollectionViewCell {
             ])
         
         NSLayoutConstraint.activate([
-            photoImageView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
-            photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             photoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            photoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            photoImageView.widthAnchor.constraint(equalToConstant: 100),
+            photoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
             ])
         super.updateConstraints()
     }
