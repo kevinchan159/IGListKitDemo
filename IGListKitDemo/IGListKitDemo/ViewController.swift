@@ -9,14 +9,17 @@
 import UIKit
 import IGListKit
 
-class ViewController: UIViewController, ProfessorSectionControllerDelegate {
+class ViewController: UIViewController {
 
     // Each collectionView should have a corresponding adapter
+    // The adapter's job is to receive the array of data model objects and break them
+    // into individual section controllers
     var collectionView: UICollectionView!
     var adapter: ListAdapter!
     
     // Our array of data model objects. Every object should conform to ListDiffable
     var professors: [Professor]!
+    var isEmptyState = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +30,15 @@ class ViewController: UIViewController, ProfessorSectionControllerDelegate {
         
         professors = [
             Professor(name: "Gates", image: #imageLiteral(resourceName: "billgates")),
-            Professor(name: "Zuckerberg", image: #imageLiteral(resourceName: "zuckerberg")),
             Professor(name: "Gates #2", image: #imageLiteral(resourceName: "billgates")),
-            Professor(name: "Zuckerberg # 2", image: #imageLiteral(resourceName: "zuckerberg")),
             Professor(name: "Gates #3", image: #imageLiteral(resourceName: "billgates")),
-            Professor(name: "Zuckerberg # 3", image: #imageLiteral(resourceName: "zuckerberg"))
+            Professor(name: "Gates #4", image: #imageLiteral(resourceName: "billgates")),
+            Professor(name: "Gates #5", image: #imageLiteral(resourceName: "billgates")),
+            Professor(name: "Gates #6", image: #imageLiteral(resourceName: "billgates"))
         ]
         
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
@@ -57,33 +60,25 @@ class ViewController: UIViewController, ProfessorSectionControllerDelegate {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
             ])
     }
-    
-    // MARK: - ProfessorSectionControllerDelegate
-    func didTapCell() {
-        professors.append(Professor(name: "New Professor", image: #imageLiteral(resourceName: "billgates")))
-        // The equivalent of reloadData() for regular collection views
-        adapter.performUpdates(animated: true) { completed in
-            // This is the code that is ran after the updates are done
-            if (completed) {
-                let lastIndexPath = IndexPath(item: 0, section: self.professors.count - 1)
-                self.collectionView.scrollToItem(at: lastIndexPath, at: .centeredHorizontally, animated: true)
-            }
-        }
-    }
+
 }
 
 extension ViewController: ListAdapterDataSource {
     // MARK: - ListAdapterDataSource
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         // Return the data model objects to use
-        return professors
+        return isEmptyState ? [EmptyStateModel()] : professors
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         // Return the sectionController to be used for this object.
         // Note: This function is called for every single object returned in objects(for listAdapter: ListAdapter)
         // which means every object will have a corresponding sectionController
-        return ProfessorSectionController(delegate: self)
+        if object is Professor {
+            return ProfessorSectionController(delegate: self)
+        } else {
+            return EmptyStateSectionController(delegate: self)
+        }
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
@@ -92,3 +87,16 @@ extension ViewController: ListAdapterDataSource {
     }
 }
 
+extension ViewController: ProfessorSectionControllerDelegate {
+    func professorCellWasSelected() {
+        isEmptyState = true
+        adapter.performUpdates(animated: true, completion: nil)
+    }
+}
+
+extension ViewController: EmptyStateSectionControllerDelegate {
+    func emptyStateCellWasTapped() {
+        isEmptyState = false
+        adapter.performUpdates(animated: true, completion: nil)
+    }
+}

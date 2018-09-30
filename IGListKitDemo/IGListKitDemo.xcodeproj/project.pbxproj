@@ -15,6 +15,9 @@
 		C2434CAD213340E800929C98 /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2434CAC213340E800929C98 /* Professor.swift */; };
 		C2434CAF2133447E00929C98 /* ProfessorSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2434CAE2133447E00929C98 /* ProfessorSectionController.swift */; };
 		C2434CB1213345F300929C98 /* ProfessorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2434CB0213345F300929C98 /* ProfessorCell.swift */; };
+		C24F01C42160954500EB82B1 /* EmptyStateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24F01C32160954500EB82B1 /* EmptyStateCell.swift */; };
+		C24F01C6216095D400EB82B1 /* EmptyStateSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24F01C5216095D400EB82B1 /* EmptyStateSectionController.swift */; };
+		C24F01C82160960F00EB82B1 /* EmptyStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24F01C72160960F00EB82B1 /* EmptyStateModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		C2434CAC213340E800929C98 /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
 		C2434CAE2133447E00929C98 /* ProfessorSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorSectionController.swift; sourceTree = "<group>"; };
 		C2434CB0213345F300929C98 /* ProfessorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorCell.swift; sourceTree = "<group>"; };
+		C24F01C32160954500EB82B1 /* EmptyStateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateCell.swift; sourceTree = "<group>"; };
+		C24F01C5216095D400EB82B1 /* EmptyStateSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateSectionController.swift; sourceTree = "<group>"; };
+		C24F01C72160960F00EB82B1 /* EmptyStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateModel.swift; sourceTree = "<group>"; };
 		C7482B0E34626EBD6AF58AC7 /* Pods-IGListKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IGListKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-IGListKitDemo/Pods-IGListKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		C75D0F93E0DD10B5446C7976 /* Pods_IGListKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IGListKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -76,9 +82,12 @@
 			children = (
 				C2434C9A21333EBC00929C98 /* AppDelegate.swift */,
 				C2434C9C21333EBC00929C98 /* ViewController.swift */,
+				C2434CAC213340E800929C98 /* Professor.swift */,
 				C2434CAE2133447E00929C98 /* ProfessorSectionController.swift */,
 				C2434CB0213345F300929C98 /* ProfessorCell.swift */,
-				C2434CAC213340E800929C98 /* Professor.swift */,
+				C24F01C72160960F00EB82B1 /* EmptyStateModel.swift */,
+				C24F01C5216095D400EB82B1 /* EmptyStateSectionController.swift */,
+				C24F01C32160954500EB82B1 /* EmptyStateCell.swift */,
 				C2434CA121333EBE00929C98 /* Assets.xcassets */,
 				C2434CA321333EBE00929C98 /* LaunchScreen.storyboard */,
 				C2434CA621333EBE00929C98 /* Info.plist */,
@@ -206,10 +215,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2434C9D21333EBC00929C98 /* ViewController.swift in Sources */,
+				C24F01C82160960F00EB82B1 /* EmptyStateModel.swift in Sources */,
 				C2434CB1213345F300929C98 /* ProfessorCell.swift in Sources */,
+				C24F01C6216095D400EB82B1 /* EmptyStateSectionController.swift in Sources */,
 				C2434CAD213340E800929C98 /* Professor.swift in Sources */,
 				C2434CAF2133447E00929C98 /* ProfessorSectionController.swift in Sources */,
 				C2434C9B21333EBC00929C98 /* AppDelegate.swift in Sources */,
+				C24F01C42160954500EB82B1 /* EmptyStateCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

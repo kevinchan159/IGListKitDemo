@@ -10,7 +10,7 @@ import Foundation
 import IGListKit
 
 protocol ProfessorSectionControllerDelegate {
-    func didTapCell()
+    func professorCellWasSelected()
 }
 
 class ProfessorSectionController: ListSectionController {
@@ -29,7 +29,11 @@ class ProfessorSectionController: ListSectionController {
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        // Get the size of the collection view
+        guard let containerSize = collectionContext?.containerSize else {
+            return .zero
+        }
+        return CGSize(width: containerSize.width, height: 100)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
@@ -37,7 +41,6 @@ class ProfessorSectionController: ListSectionController {
         let cell = collectionContext?.dequeueReusableCell(of: ProfessorCell.self, for: self, at: index) as! ProfessorCell
         cell.configure(for: professor)
         cell.setNeedsUpdateConstraints()
-        
         return cell
     }
     
@@ -53,6 +56,6 @@ class ProfessorSectionController: ListSectionController {
     }
     
     override func didSelectItem(at index: Int) {
-        delegate.didTapCell()
+        delegate.professorCellWasSelected()
     }
 }

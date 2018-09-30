@@ -40,6 +40,6 @@ extension Professor: ListDiffable {
             // If the object is not of Professor class, return false
             return false
         }
-        return name == object.name
+        return identifier == object.identifier
     }
 }
